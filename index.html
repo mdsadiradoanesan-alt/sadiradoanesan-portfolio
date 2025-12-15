@@ -12,7 +12,11 @@
             --neon-blue: #00f3ff;
             --neon-purple: #bc13fe;
             --text-main: #e0e0e0;
-            --text-dim: #888;
+            --text-dim: #aaa;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         * {
@@ -26,9 +30,10 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             overflow-x: hidden;
+            padding-top: 80px; /* Space for fixed nav */
         }
 
-        /* Background Grid Effect */
+        /* Background Grid */
         .grid-bg {
             position: fixed;
             top: 0;
@@ -39,12 +44,54 @@
                 linear-gradient(var(--glass-border) 1px, transparent 1px),
                 linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
             background-size: 50px 50px;
-            opacity: 0.2;
+            opacity: 0.15;
             z-index: -1;
             pointer-events: none;
         }
 
-        /* Header / Hero */
+        /* Navigation (The Detailed Index) */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-purple);
+        }
+
+        /* Hero Section */
         header {
             min-height: 80vh;
             display: flex;
@@ -62,135 +109,168 @@
             background: linear-gradient(90deg, var(--neon-blue), #fff, var(--neon-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
         }
 
-        .contact-info {
+        .contact-bar {
             display: flex;
-            gap: 20px;
+            gap: 2rem;
             margin-bottom: 2rem;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--neon-blue);
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .contact-info span {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            border: 1px solid var(--glass-border);
+            padding: 10px 30px;
+            border-radius: 50px;
+            background: var(--glass-bg);
         }
 
         p.subtitle {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--text-dim);
-            max-width: 600px;
+            max-width: 700px;
             line-height: 1.6;
         }
 
         .cta-btn {
-            margin-top: 2rem;
-            padding: 12px 35px;
+            margin-top: 2.5rem;
+            padding: 15px 40px;
             background: transparent;
             border: 1px solid var(--neon-blue);
             color: var(--neon-blue);
-            font-size: 0.9rem;
+            font-size: 1rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
+            display: inline-block;
         }
 
         .cta-btn:hover {
             background: var(--neon-blue);
             color: #000;
-            box-shadow: 0 0 20px var(--neon-blue);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
+        }
+
+        /* Sections General */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--neon-purple);
+            padding-left: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        /* About & Services Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .info-card h3 {
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .info-card p {
+            color: var(--text-dim);
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         /* Portfolio Grid */
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin: 4rem 0 2rem;
-            color: var(--text-main);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem;
+        .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
-        .card {
+        .project-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
             transition: transform 0.3s, border-color 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
+        .project-card:hover {
+            transform: translateY(-8px);
             border-color: var(--neon-purple);
-            box-shadow: 0 0 15px rgba(188, 19, 254, 0.2);
+            box-shadow: 0 0 20px rgba(188, 19, 254, 0.15);
         }
 
-        .card h3 {
-            color: #fff;
-            margin-bottom: 0.3rem;
-            font-size: 1.3rem;
-        }
-
-        .card span.category {
-            font-size: 0.75rem;
+        .project-tag {
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            background: rgba(0, 243, 255, 0.1);
             color: var(--neon-blue);
-            display: block;
-            margin-bottom: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 1rem;
         }
 
-        .card p {
+        .project-card h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
             color: var(--text-dim);
             font-size: 0.9rem;
-            margin-bottom: 1.2rem;
-            line-height: 1.4;
+            margin-bottom: 1.5rem;
         }
 
-        .card-link {
+        .project-link {
             text-decoration: none;
             color: #fff;
-            font-size: 0.85rem;
             border-bottom: 1px solid var(--neon-purple);
-            padding-bottom: 2px;
+            padding-bottom: 3px;
+            font-size: 0.9rem;
             transition: color 0.3s;
         }
 
-        .card-link:hover {
+        .project-link:hover {
             color: var(--neon-purple);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 3rem;
+            padding: 4rem 2rem;
             border-top: 1px solid var(--glass-border);
-            margin-top: 3rem;
             color: var(--text-dim);
             font-size: 0.8rem;
         }
 
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
-            .contact-info { flex-direction: column; gap: 5px; }
+            .nav-links { display: none; } /* Simplified for mobile */
+            .contact-bar { flex-direction: column; gap: 5px; border: none; background: none;}
         }
     </style>
 </head>
@@ -198,77 +278,126 @@
 
     <div class="grid-bg"></div>
 
-    <header>
+    <nav>
+        <div class="logo">SADI RADOAN ESAN</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="https://www.fiverr.com/sadiradoanesan/buying?source=avatar_menu_profile" target="_blank" style="color:var(--neon-blue)">Hire Me</a>
+        </div>
+    </nav>
+
+    <header id="home">
         <h1>Md Sadi Radoan Esan</h1>
         
-        <div class="contact-info">
+        <div class="contact-bar">
             <span>mdsadiradoanesan@gmail.com</span>
-            <span>|</span>
             <span>+880 1644-505466</span>
         </div>
 
         <p class="subtitle">
-            Video Strategist & Content Architect.<br>
-            Building high-retention channels across 7+ niches.
+            Lead Video Strategist & Channel Architect. <br>
+            I manage high-retention content networks across 6+ niches, bridging the gap between storytelling and technical execution.
         </p>
-        <a href="https://www.fiverr.com/sadiradoanesan/buying?source=avatar_menu_profile" class="cta-btn" target="_blank">Work With Me</a>
+        <a href="#portfolio" class="cta-btn">View My Work</a>
     </header>
 
-    <h2 class="section-title">Channel Network</h2>
-    
-    <div class="container">
-        <div class="card">
-            <span class="category">Animation</span>
-            <h3>Rupkothar Golpo</h3>
-            <p>Bengali fairytales with custom character animation.</p>
-            <a href="https://youtube.com/@rupkothargopoetb?si=4eWfAqcweMTJ7GNi" class="card-link" target="_blank">View Channel →</a>
+    <section id="about">
+        <div class="section-header">
+            <h2>About Me</h2>
         </div>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>The Approach</h3>
+                <p>I don't just edit videos; I build sustainable channels. By combining creative direction with efficient production workflows, I help brands scale their output without sacrificing quality.</p>
+            </div>
+            <div class="info-card">
+                <h3>The Experience</h3>
+                <p>As the founder of a multi-channel network, I actively manage content for folklore, sci-fi, and educational niches. I understand the YouTube algorithm, retention pacing, and visual hooks.</p>
+            </div>
+        </div>
+    </section>
 
-        <div class="card">
-            <span class="category">Storytelling</span>
-            <h3>ETB Golpo</h3>
-            <p>Cinematic storytelling and immersive explainers.</p>
-            <a href="https://youtube.com/@etbgolpo?si=FrwprdpKJFGgrZd_" class="card-link" target="_blank">View Channel →</a>
+    <section id="services">
+        <div class="section-header">
+            <h2>Services</h2>
         </div>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Video Editing & VFX</h3>
+                <p>High-end editing with a focus on "Tech-Noir" aesthetics, glassmorphism UI, and cinematic sound design. Perfect for documentaries and sci-fi.</p>
+            </div>
+            <div class="info-card">
+                <h3>Channel Management</h3>
+                <p>Full-stack channel handling: from niche research and script optimization to thumbnail design and metadata SEO.</p>
+            </div>
+            <div class="info-card">
+                <h3>Animation & Motion</h3>
+                <p>Custom 2D character animation and motion graphics, specifically tailored for storytelling and educational content.</p>
+            </div>
+        </div>
+    </section>
 
-        <div class="card">
-            <span class="category">Sci-Fi</span>
-            <h3>American Void</h3>
-            <p>Dark aesthetic mystery and sci-fi content.</p>
-            <a href="https://youtube.com/@theamericanvoid?si=m9--7b9jHP8jS-S-" class="card-link" target="_blank">View Channel →</a>
+    <section id="portfolio">
+        <div class="section-header">
+            <h2>Channel Portfolio</h2>
         </div>
+        
+        <div class="portfolio-grid">
+            
+            <div class="project-card">
+                <span class="project-tag">Folklore & Animation</span>
+                <h3>Rupkothar Golpo</h3>
+                <p>A leading destination for Bengali fairytales featuring custom character animation and cultural storytelling.</p>
+                <a href="https://youtube.com/@rupkothargopoetb?si=4eWfAqcweMTJ7GNi" class="project-link" target="_blank">Watch Channel →</a>
+            </div>
 
-        <div class="card">
-            <span class="category">Documentary</span>
-            <h3>Unknown</h3>
-            <p>Documentaries on unexplained phenomena.</p>
-            <a href="https://youtube.com/@unknownetb?si=Qu-Na2pT3HTR0lcb" class="card-link" target="_blank">View Channel →</a>
-        </div>
+            <div class="project-card">
+                <span class="project-tag">Narrative Series</span>
+                <h3>ETB Golpo</h3>
+                <p>Cinematic storytelling focusing on high-retention visuals and immersive audio experiences.</p>
+                <a href="https://youtube.com/@etbgolpo?si=FrwprdpKJFGgrZd_" class="project-link" target="_blank">Watch Channel →</a>
+            </div>
 
-        <div class="card">
-            <span class="category">Suspense</span>
-            <h3>Near Us</h3>
-            <p>High-tension suspense and mystery storytelling.</p>
-            <a href="https://youtube.com/@nearusetb?si=YKBh_D50crl_NqSg" class="card-link" target="_blank">View Channel →</a>
-        </div>
+            <div class="project-card">
+                <span class="project-tag">Sci-Fi & Mystery</span>
+                <h3>American Void</h3>
+                <p>US-focused content exploring the unknown. Features "Tech-Noir" editing and dark atmospheric design.</p>
+                <a href="https://youtube.com/@theamericanvoid?si=m9--7b9jHP8jS-S-" class="project-link" target="_blank">Watch Channel →</a>
+            </div>
 
-        <div class="card">
-            <span class="category">Viral Shorts</span>
-            <h3>CatVerse</h3>
-            <p>Viral, high-engagement pet shorts.</p>
-            <a href="https://youtube.com/@catverseetb?si=hV0EIgX0lQO-_NB9" class="card-link" target="_blank">View Channel →</a>
-        </div>
+            <div class="project-card">
+                <span class="project-tag">Documentary</span>
+                <h3>Unknown</h3>
+                <p>Deep-dive documentaries into unexplained phenomena with professional pacing and research.</p>
+                <a href="https://www.youtube.com/@UnknownbyETB" class="project-link" target="_blank">Watch Channel →</a>
+            </div>
 
-        <div class="card">
-            <span class="category">Kids</span>
-            <h3>Kids Story</h3>
-            <p>Colorful, educational stories for children.</p>
-            <a href="https://youtube.com/@kidsstoryetb?si=9u994b7yd0rLj9sg" class="card-link" target="_blank">View Channel →</a>
+            <div class="project-card">
+                <span class="project-tag">Viral Shorts</span>
+                <h3>CatVerse</h3>
+                <p>High-energy, fast-paced pet content optimized for mobile viewing and viral sharing.</p>
+                <a href="https://youtube.com/@catverseetb?si=hV0EIgX0lQO-_NB9" class="project-link" target="_blank">Watch Channel →</a>
+            </div>
+
+            <div class="project-card">
+                <span class="project-tag">Edutainment</span>
+                <h3>Kids Story</h3>
+                <p>Colorful, safe, and engaging stories designed for younger audiences with high replay value.</p>
+                <a href="https://youtube.com/@kidsstoryetb?si=9u994b7yd0rLj9sg" class="project-link" target="_blank">Watch Channel →</a>
+            </div>
+
         </div>
-    </div>
+    </section>
 
     <footer>
-        <p>© 2025 Md Sadi Radoan Esan. All Rights Reserved.</p>
+        <p>Ready to scale your content?</p>
+        <br>
+        <a href="https://www.fiverr.com/sadiradoanesan/buying?source=avatar_menu_profile" class="cta-btn" target="_blank" style="font-size: 0.8rem; padding: 10px 30px;">Hire Me on Fiverr</a>
+        <br><br>
+        <p style="opacity: 0.5;">© 2025 Md Sadi Radoan Esan.</p>
     </footer>
 
 </body>
