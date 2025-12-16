@@ -102,6 +102,25 @@
             padding: 2rem;
         }
 
+        /* Profile Image Styles */
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%; /* Ensures perfect circle */
+            border: 3px solid var(--neon-blue);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+            object-fit: cover;
+            margin-bottom: 2rem;
+            animation: float 6s ease-in-out infinite;
+            background-color: var(--glass-bg); /* Fallback color */
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
         h1 {
             font-size: 3.5rem;
             text-transform: uppercase;
@@ -290,6 +309,16 @@
     </nav>
 
     <header id="home">
+        <!-- 
+            ACTION REQUIRED: 
+            Replace 'INSERT_GITHUB_USERNAME' and 'INSERT_REPO_NAME' with your actual GitHub info.
+            Ensure your repo is 'Public' for this link to work.
+        -->
+        <img src="https://raw.githubusercontent.com/mdsadiradoanesan-alt/sadiradoanesan-portfolio/main/528429090_1069273972056768_7681907653296391703_n.jpg" 
+             alt="Md Sadi Radoan Esan" 
+             class="profile-img"
+             onerror="this.style.display='none'; alert('Image failed to load. Please update the GitHub URL in line 224 of the HTML code.');">
+        
         <h1>Md Sadi Radoan Esan</h1>
         
         <div class="contact-bar">
@@ -327,7 +356,7 @@
         <div class="info-grid">
             <div class="info-card">
                 <h3>AI Content Engineering</h3>
-                <p>Advanced integration of generative AI including Veo 3, Sora, and Runway ML. Services cover automated scriptwriting, precision TTS voice generation, and Meta AI workflows for next-gen storytelling.</p>
+                <p>Expert integration of generative AI tools including Veo 3, Sora, and Runway ML. Services cover automated scriptwriting, precision TTS voice generation, and Meta AI workflows to create high-efficiency, next-gen video content.</p>
             </div>
             <div class="info-card">
                 <h3>Channel Management</h3>
