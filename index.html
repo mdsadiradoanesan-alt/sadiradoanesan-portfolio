@@ -3,62 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md Sadi Radoan Esan | Portfolio</title>
+    <title>Md. Sadi Radoan Esan | Content Strategist</title>
+    <!-- Importing Inter Font for a Premium Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #050505;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --neon-blue: #00f3ff;
-            --neon-purple: #bc13fe;
-            --text-main: #e0e0e0;
-            --text-dim: #aaa;
+            /* Premium Midnight Palette */
+            --bg-dark: #0B1120;       /* Deepest Slate */
+            --card-bg: rgba(30, 41, 59, 0.7); /* Translucent Slate */
+            --border-color: rgba(148, 163, 184, 0.1);
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%); /* Cyan to Indigo */
+            --accent-solid: #38bdf8;
+            --glow: 0 0 40px rgba(56, 189, 248, 0.15);
         }
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 100px; 
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
             overflow-x: hidden;
-            padding-top: 80px; /* Space for fixed nav */
-        }
-
-        /* Background Grid */
-        .grid-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            line-height: 1.6; 
             background-image: 
-                linear-gradient(var(--glass-border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.15;
-            z-index: -1;
-            pointer-events: none;
+                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(129, 140, 248, 0.08) 0px, transparent 50%);
+            background-attachment: fixed;
         }
 
-        /* Navigation (The Detailed Index) */
+        /* Minimal Fade Up Animation */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-entry {
+            animation: fadeUp 0.8s ease-out forwards;
+            opacity: 0; 
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1.5rem 2rem;
-            background: rgba(5, 5, 5, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
+            padding: 0.8rem 5%; /* Adjusted padding for image */
+            background: rgba(11, 17, 32, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
@@ -66,369 +74,479 @@
         }
 
         .logo {
-            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .logo-text {
+            font-weight: 800;
             font-size: 1.2rem;
-            color: var(--neon-blue);
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: -0.5px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem; 
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--neon-purple);
+            color: var(--text-primary);
         }
 
-        /* Hero Section */
+        /* Hero Container */
+        .container {
+            max-width: 1100px; 
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
         header {
-            min-height: 80vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
+            justify-content: center; /* Vertically center the whole hero block */
+            padding-top: 80px; /* Space for nav */
+            padding-bottom: 2rem; 
         }
 
-        /* Profile Image Styles */
+        .hero-content {
+            display: flex;
+            align-items: center; /* Vertically centers image and text relative to each other */
+            justify-content: space-between;
+            gap: 4rem; 
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .hero-image-wrapper {
+            flex: 0 0 350px;
+            position: relative;
+        }
+
         .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%; /* Ensures perfect circle */
-            border: 3px solid var(--neon-blue);
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+            width: 320px;
+            height: 320px;
+            border-radius: 30px; 
             object-fit: cover;
-            margin-bottom: 2rem;
-            animation: float 6s ease-in-out infinite;
-            background-color: var(--glass-bg); /* Fallback color */
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.5), 
+                        -5px -5px 20px rgba(255,255,255,0.05);
+            transition: transform 0.3s ease;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+        .profile-img:hover {
+            transform: scale(1.02) rotate(1deg);
         }
 
         h1 {
-            font-size: 3.5rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            background: linear-gradient(90deg, var(--neon-blue), #fff, var(--neon-purple));
+            font-size: 3.5rem; 
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            background: linear-gradient(to right, #fff, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
         }
 
-        .contact-bar {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
-            color: var(--neon-blue);
-            border: 1px solid var(--glass-border);
-            padding: 10px 30px;
-            border-radius: 50px;
-            background: var(--glass-bg);
-        }
-
-        p.subtitle {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            max-width: 700px;
-            line-height: 1.6;
-        }
-
-        .cta-btn {
-            margin-top: 2.5rem;
-            padding: 15px 40px;
-            background: transparent;
-            border: 1px solid var(--neon-blue);
-            color: var(--neon-blue);
-            font-size: 1rem;
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--accent-solid);
+            font-weight: 600;
+            text-transform: uppercase;
             letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
+            margin-bottom: 1rem; 
+            display: block;
+            position: relative; 
         }
 
-        .cta-btn:hover {
-            background: var(--neon-blue);
-            color: #000;
-            box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
+        .bio {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem; 
+            line-height: 1.7;
+            max-width: 600px;
         }
 
-        /* Sections General */
-        section {
-            padding: 6rem 2rem;
-            max-width: 1100px;
-            margin: 0 auto;
+        .bio strong {
+            color: var(--text-primary);
+            font-weight: 600;
         }
 
-        .section-header {
+        /* Skills */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
             margin-bottom: 3rem;
-            border-left: 4px solid var(--neon-purple);
-            padding-left: 1.5rem;
         }
 
-        .section-header h2 {
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            color: #fff;
+        .skill-pill {
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
         }
 
-        /* About & Services Grid */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .skill-pill:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: var(--accent-solid);
+            color: var(--text-primary);
         }
 
-        .info-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            padding: 2rem;
-            border-radius: 10px;
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: var(--text-primary);
+            color: var(--bg-dark);
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .info-card h3 {
-            color: var(--neon-blue);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
         }
 
-        .info-card p {
-            color: var(--text-dim);
-            line-height: 1.6;
+        /* History Section */
+        .history-section {
+            display: flex;
+            gap: 2rem; 
+            margin-top: 3rem;
+        }
+
+        .history-item {
+            text-align: left;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border-color);
+            transition: border-color 0.3s;
+        }
+
+        .history-item h4 {
             font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+            color: var(--text-primary);
         }
 
-        /* Portfolio Grid */
-        .portfolio-grid {
+        /* Work Section */
+        #work {
+            padding: 6rem 0; 
+            background: linear-gradient(to bottom, var(--bg-dark), #0f1623);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            margin-bottom: 3rem; 
+        }
+
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem; 
         }
 
-        .project-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
             padding: 2rem;
-            transition: transform 0.3s, border-color 0.3s;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(5px);
         }
 
-        .project-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--neon-purple);
-            box-shadow: 0 0 20px rgba(188, 19, 254, 0.15);
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
         }
 
-        .project-tag {
-            font-size: 0.7rem;
+        .card-tag {
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            background: rgba(0, 243, 255, 0.1);
-            color: var(--neon-blue);
-            padding: 5px 10px;
-            border-radius: 4px;
-            display: inline-block;
+            font-weight: 700;
+            color: var(--accent-solid);
             margin-bottom: 1rem;
         }
 
-        .project-card h3 {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 0.5rem;
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
         }
 
-        .project-card p {
-            color: var(--text-dim);
-            font-size: 0.9rem;
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
-        .project-link {
+        .card-link {
             text-decoration: none;
-            color: #fff;
-            border-bottom: 1px solid var(--neon-purple);
-            padding-bottom: 3px;
+            color: var(--text-primary);
+            font-weight: 600;
             font-size: 0.9rem;
-            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
         }
 
-        .project-link:hover {
-            color: var(--neon-purple);
+        .card-link:hover {
+            opacity: 1;
+            color: var(--accent-solid);
         }
 
         /* Footer */
         footer {
+            padding: 4rem 0; 
+            background: #0f1623;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
             text-align: center;
-            padding: 4rem 2rem;
-            border-top: 1px solid var(--glass-border);
-            color: var(--text-dim);
-            font-size: 0.8rem;
         }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            .nav-links { display: none; } /* Simplified for mobile */
-            .contact-bar { flex-direction: column; gap: 5px; border: none; background: none;}
+        .footer-contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 3rem; 
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-item span {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .footer-cta {
+            color: var(--accent-solid);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 900px) {
+            header {
+                padding-top: 100px; 
+                min-height: auto;
+            }
+            .hero-content { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: 2rem; 
+                align-items: center;
+            }
+            .hero-text { text-align: center; }
+            .skills-grid { justify-content: center; }
+            .history-section { justify-content: center; }
+            .hero-image-wrapper { flex: none; width: 100%; display: flex; justify-content: center; }
+            .profile-img { width: 250px; height: 250px; }
+            h1 { font-size: 2.8rem; }
+            .bio { margin-left: auto; margin-right: auto; }
         }
     </style>
 </head>
 <body>
 
-    <div class="grid-bg"></div>
-
     <nav>
-        <div class="logo">SADI RADOAN ESAN</div>
+        <div class="logo">
+            <img src="https://raw.githubusercontent.com/mdsadiradoanesan-alt/sadiradoanesan-portfolio/main/528429090_1069273972056768_7681907653296391703_n.png" alt="Profile icon" class="nav-logo-img">
+            <span class="logo-text">Md. Sadi Radoan Esan</span>
+        </div>
         <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="https://www.fiverr.com/sadiradoanesan/buying?source=avatar_menu_profile" target="_blank" style="color:var(--neon-blue)">Hire Me</a>
+            <a href="#profile">Profile</a>
+            <a href="#work">Portfolio</a>
+            <a href="https://www.fiverr.com/sadiradoanesan/buying?source=avatar_menu_profile" target="_blank">Contact</a>
         </div>
     </nav>
 
-    <header id="home">
-        <!-- 
-            ACTION REQUIRED: 
-            Replace 'INSERT_GITHUB_USERNAME' and 'INSERT_REPO_NAME' with your actual GitHub info.
-            Ensure your repo is 'Public' for this link to work.
-        -->
-        <img src="https://raw.githubusercontent.com/mdsadiradoanesan-alt/sadiradoanesan-portfolio/main/528429090_1069273972056768_7681907653296391703_n.png" 
-             alt="Md Sadi Radoan Esan" 
-             class="profile-img"
-             onerror="this.style.display='none'; alert('Image failed to load. Please update the GitHub URL in line 224 of the HTML code.');">
-        
-        <h1>Md Sadi Radoan Esan</h1>
-        
-        <div class="contact-bar">
-            <span>mdsadiradoanesan@gmail.com</span>
-            <span>+880 1644-505466</span>
-        </div>
+    <header id="profile" class="container">
+        <div class="hero-content">
+            
+            <div class="hero-image-wrapper animate-entry delay-1">
+                <img src="https://raw.githubusercontent.com/mdsadiradoanesan-alt/sadiradoanesan-portfolio/main/528429090_1069273972056768_7681907653296391703_n.png" 
+                     alt="Md. Sadi Radoan Esan" 
+                     class="profile-img"
+                     onerror="this.style.display='none';">
+            </div>
 
-        <p class="subtitle">
-            Lead Video Strategist & Channel Architect. <br>
-            I manage high-retention content networks across 6+ niches, bridging the gap between storytelling and technical execution.
-        </p>
-        <a href="#portfolio" class="cta-btn">View My Work</a>
+            <div class="hero-text animate-entry">
+                <div class="subtitle">Content Strategist & Workflow Architect</div>
+                <h1>Md. Sadi Radoan Esan</h1>
+                
+                <p class="bio delay-1">
+                    Content Creator since 2023 with a specialized focus on <strong>AI integration</strong> and <strong>workflow automation</strong>. 
+                    I leverage cutting-edge tools to streamline video production and digital storytelling, creating high-impact content with efficiency.
+                </p>
+
+                <div class="skills-grid delay-2">
+                    <span class="skill-pill">Video Editing</span>
+                    <span class="skill-pill">CapCut & Filmora</span>
+                    <span class="skill-pill">RunwayML</span>
+                    <span class="skill-pill">Sora</span>
+                    <span class="skill-pill">Veo</span>
+                    <span class="skill-pill">Google AI Studio</span>
+                    <span class="skill-pill">n8n & Zapier (Just Knowledge)</span>
+                    <span class="skill-pill">Communication & Management</span>
+                </div>
+
+                <div class="delay-3" style="margin-bottom: 2.5rem;">
+                    <a href="#work" class="cta-button">View Portfolio</a>
+                </div>
+
+                <div class="history-section delay-3">
+                    <div class="history-item">
+                        <h4>Content Creator</h4>
+                        <span style="color: var(--text-secondary); font-size: 0.8rem;">Esan The Baang (Jan 2023 - Present)</span>
+                    </div>
+                    <div class="history-item">
+                        <h4>BBA Undergraduate</h4>
+                        <span style="color: var(--text-secondary); font-size: 0.8rem;">East University (4th Semester)</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </header>
 
-    <section id="about">
-        <div class="section-header">
-            <h2>About Me</h2>
-        </div>
-        <div class="info-grid">
-            <div class="info-card">
-                <h3>The Approach</h3>
-                <p>I don't just edit videos; I build sustainable channels. By combining creative direction with efficient production workflows, I help brands scale their output without sacrificing quality.</p>
-            </div>
-            <div class="info-card">
-                <h3>The Experience</h3>
-                <p>As the founder of a multi-channel network, I actively manage content for folklore, sci-fi, and educational niches. I understand the YouTube algorithm, retention pacing, and visual hooks.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="services">
-        <div class="section-header">
-            <h2>Services</h2>
-        </div>
-        <div class="info-grid">
-            <div class="info-card">
-                <h3>AI Content Engineering</h3>
-                <p>Expert integration of generative AI tools including Veo 3, Sora, and Runway ML. Services cover automated scriptwriting, precision TTS voice generation, and Meta AI workflows to create high-efficiency, next-gen video content.</p>
-            </div>
-            <div class="info-card">
-                <h3>Channel Management</h3>
-                <p>Full-stack channel handling: from niche research and script optimization to thumbnail design and metadata SEO.</p>
-            </div>
-            <div class="info-card">
-                <h3>Animation & Motion</h3>
-                <p>Custom 2D character animation and motion graphics, specifically tailored for storytelling and educational content.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio">
-        <div class="section-header">
-            <h2>Channel Portfolio</h2>
-        </div>
-        
-        <div class="portfolio-grid">
+    <section id="work">
+        <div class="container">
+            <div class="section-title">Selected Works</div>
+            <div class="section-desc">A curated collection of my physical channels and automated content networks.</div>
             
-            <div class="project-card">
-                <span class="project-tag">Folklore & Animation</span>
-                <h3>Rupkothar Golpo</h3>
-                <p>A leading destination for Bengali fairytales featuring custom character animation and cultural storytelling.</p>
-                <a href="https://youtube.com/@rupkothargopoetb?si=4eWfAqcweMTJ7GNi" class="project-link" target="_blank">Watch Channel →</a>
-            </div>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="card-tag">Physical Channel</div>
+                    <h3>Esan The Baang</h3>
+                    <p>My personal brand focusing on humor, skits, and relatable lifestyle content. A playground for creative expression and audience engagement.</p>
+                    <a href="https://www.facebook.com/share/1BwynvsNgA/" target="_blank" class="card-link">Visit Facebook Page &rarr;</a>
+                </div>
 
-            <div class="project-card">
-                <span class="project-tag">Narrative Series</span>
-                <h3>ETB Golpo</h3>
-                <p>Cinematic storytelling focusing on high-retention visuals and immersive audio experiences.</p>
-                <a href="https://youtube.com/@etbgolpo?si=FrwprdpKJFGgrZd_" class="project-link" target="_blank">Watch Channel →</a>
-            </div>
+                <div class="card">
+                    <div class="card-tag">Physical Channel</div>
+                    <h3>Factors Tube</h3>
+                    <p>A dedicated space for discussing social issues, interesting facts, and current events through engaging commentary and analysis.</p>
+                    <a href="https://www.youtube.com/@FactorsTube/videos" target="_blank" class="card-link">Watch on YouTube &rarr;</a>
+                </div>
 
-            <div class="project-card">
-                <span class="project-tag">Sci-Fi & Mystery</span>
-                <h3>American Void</h3>
-                <p>US-focused content exploring the unknown. Features "Tech-Noir" editing and dark atmospheric design.</p>
-                <a href="https://youtube.com/@theamericanvoid?si=m9--7b9jHP8jS-S-" class="project-link" target="_blank">Watch Channel →</a>
-            </div>
+                <div class="card">
+                    <div class="card-tag">Sci-Fi & Mystery</div>
+                    <h3>American Void</h3>
+                    <p>Exploring the unknown with "Tech-Noir" editing styles and dark atmospheric sound design.</p>
+                    <a href="https://www.youtube.com/@TheAmericanVoid/shorts" target="_blank" class="card-link">Watch Shorts &rarr;</a>
+                </div>
 
-            <div class="project-card">
-                <span class="project-tag">Documentary</span>
-                <h3>Unknown</h3>
-                <p>Deep-dive documentaries into unexplained phenomena with professional pacing and research.</p>
-                <a href="https://www.youtube.com/@UnknownbyETB" class="project-link" target="_blank">Watch Channel →</a>
-            </div>
+                <div class="card">
+                    <div class="card-tag">Folklore & Animation</div>
+                    <h3>Rupkothar Golpo</h3>
+                    <p>Bringing Bengali fairytales to life with custom character animation and cultural storytelling.</p>
+                    <a href="https://www.youtube.com/@ETBRupkotha/shorts" target="_blank" class="card-link">Watch Shorts &rarr;</a>
+                </div>
 
-            <div class="project-card">
-                <span class="project-tag">Viral Shorts</span>
-                <h3>CatVerse</h3>
-                <p>High-energy, fast-paced pet content optimized for mobile viewing and viral sharing.</p>
-                <a href="https://youtube.com/@catverseetb?si=hV0EIgX0lQO-_NB9" class="project-link" target="_blank">Watch Channel →</a>
-            </div>
+                <div class="card">
+                    <div class="card-tag">Narrative Series</div>
+                    <h3>ETB Golpo</h3>
+                    <p>Cinematic storytelling designed for high retention, featuring immersive audio experiences.</p>
+                    <a href="https://youtube.com/@etbgolpo?si=FrwprdpKJFGgrZd_" target="_blank" class="card-link">Watch Channel &rarr;</a>
+                </div>
 
-            <div class="project-card">
-                <span class="project-tag">Edutainment</span>
-                <h3>Kids Story</h3>
-                <p>Colorful, safe, and engaging stories designed for younger audiences with high replay value.</p>
-                <a href="https://youtube.com/@kidsstoryetb?si=9u994b7yd0rLj9sg" class="project-link" target="_blank">Watch Channel →</a>
-            </div>
+                <div class="card">
+                    <div class="card-tag">Documentary</div>
+                    <h3>Unknown</h3>
+                    <p>Professional research-based documentaries diving deep into unexplained phenomena.</p>
+                    <a href="https://www.youtube.com/@UnknownbyETB" target="_blank" class="card-link">Watch Channel &rarr;</a>
+                </div>
 
+                <div class="card">
+                    <div class="card-tag">Viral Shorts</div>
+                    <h3>CatVerse</h3>
+                    <p>High-energy, fast-paced pet content optimized specifically for mobile viewing and sharing.</p>
+                    <a href="https://youtube.com/@catverseetb?si=hV0EIgX0lQO-_NB9" target="_blank" class="card-link">Watch Channel &rarr;</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-tag">Edutainment</div>
+                    <h3>Kids Story</h3>
+                    <p>Safe, colorful, and engaging stories designed for younger audiences with high replay value.</p>
+                    <a href="https://youtube.com/@kidssstoryetb?si=Yy8bmNGGXfNR5iUN" target="_blank" class="card-link">Watch Channel &rarr;</a>
+                </div>
+
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>Ready to scale your content?</p>
-        <br>
-        <a href="https://www.fiverr.com/sadiradoanesan/buying?source=avatar_menu_profile" class="cta-btn" target="_blank" style="font-size: 0.8rem; padding: 10px 30px;">Hire Me on Fiverr</a>
-        <br><br>
-        <p style="opacity: 0.5;">© 2025 Md Sadi Radoan Esan.</p>
+        <div class="container">
+            <div class="footer-contact-grid">
+                <div class="footer-item">
+                    <div style="font-size: 0.8rem; color: #94A3B8;">EMAIL</div>
+                    <span>mdsadiradoanesan@gmail.com</span>
+                </div>
+                <div class="footer-item">
+                    <div style="font-size: 0.8rem; color: #94A3B8;">PHONE</div>
+                    <span>+880 1644-505466</span>
+                </div>
+                <div class="footer-item">
+                    <div style="font-size: 0.8rem; color: #94A3B8;">LOCATION</div>
+                    <span>Rampura, Dhaka</span>
+                </div>
+            </div>
+
+            <a href="https://www.fiverr.com/sadiradoanesan/buying?source=avatar_menu_profile" target="_blank" class="footer-cta">Let's work together on Fiverr &rarr;</a>
+            <br><br>
+            <p style="opacity: 0.5;">© 2025 Md. Sadi Radoan Esan.</p>
+        </div>
     </footer>
 
 </body>
 </html>
-
