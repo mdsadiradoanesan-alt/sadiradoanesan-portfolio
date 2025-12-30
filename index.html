@@ -57,32 +57,45 @@
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
 
-        /* Navigation */
+        /* Navigation - Modified to hide at top */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 0.8rem 5%; /* Adjusted padding for image */
-            background: rgba(11, 17, 32, 0.95);
+            padding: 1rem 5%; 
+            background: rgba(11, 17, 32, 0.98);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            
+            /* Initial Hidden State */
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        /* Visible State triggered by JS */
+        nav.nav-visible {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
             text-decoration: none;
         }
 
         .nav-logo-img {
-            width: 38px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             object-fit: cover;
             border: 1px solid rgba(56, 189, 248, 0.3);
@@ -125,14 +138,15 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Vertically center the whole hero block */
-            padding-top: 80px; /* Space for nav */
-            padding-bottom: 2rem; 
+            justify-content: center; 
+            /* Reduced padding-top so content is higher up when nav is hidden */
+            padding-top: 60px; 
+            padding-bottom: 4rem; 
         }
 
         .hero-content {
             display: flex;
-            align-items: center; /* Vertically centers image and text relative to each other */
+            align-items: center; 
             justify-content: space-between;
             gap: 4rem; 
             width: 100%;
@@ -265,7 +279,7 @@
         }
 
         .section-title {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
             letter-spacing: -1px;
@@ -273,13 +287,13 @@
 
         .section-desc {
             color: var(--text-secondary);
-            margin-bottom: 3rem; 
+            margin-bottom: 4rem; 
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem; 
+            gap: 2.5rem; 
         }
 
         .card {
@@ -339,7 +353,7 @@
 
         /* Footer */
         footer {
-            padding: 4rem 0; 
+            padding: 6rem 0; 
             background: #0f1623;
             border-top: 1px solid var(--border-color);
             color: var(--text-secondary);
@@ -350,8 +364,8 @@
         .footer-contact-grid {
             display: flex;
             justify-content: center;
-            gap: 3rem; 
-            margin-bottom: 2rem;
+            gap: 4rem; 
+            margin-bottom: 3rem;
             flex-wrap: wrap;
         }
         
@@ -376,7 +390,7 @@
 
         @media (max-width: 900px) {
             header {
-                padding-top: 100px; 
+                padding-top: 80px; 
                 min-height: auto;
             }
             .hero-content { 
@@ -397,7 +411,7 @@
 </head>
 <body>
 
-    <nav>
+    <nav id="main-nav">
         <div class="logo">
             <img src="https://raw.githubusercontent.com/mdsadiradoanesan-alt/sadiradoanesan-portfolio/main/528429090_1069273972056768_7681907653296391703_n.png" alt="Profile icon" class="nav-logo-img">
             <span class="logo-text">Md. Sadi Radoan Esan</span>
@@ -420,9 +434,7 @@
             </div>
 
             <div class="hero-text animate-entry">
-                <!-- Name is now at the top of the text block -->
                 <h1>Md. Sadi Radoan Esan</h1>
-                <!-- Title is now under the name -->
                 <div class="subtitle">Content Strategist & Workflow Architect</div>
                 
                 <p class="bio delay-1">
@@ -550,6 +562,19 @@
             <p style="opacity: 0.5;">© 2025 Md. Sadi Radoan Esan.</p>
         </div>
     </footer>
+
+    <script>
+        // Logic to show/hide nav on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('main-nav');
+            // Show nav after scrolling 60 pixels
+            if (window.scrollY > 60) {
+                nav.classList.add('nav-visible');
+            } else {
+                nav.classList.remove('nav-visible');
+            }
+        });
+    </script>
 
 </body>
 </html>
